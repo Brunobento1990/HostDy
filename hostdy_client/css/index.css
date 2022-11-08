@@ -1,0 +1,125 @@
+body{
+    margin: 0;
+	padding: 0;
+	border: 0;
+    width: 100%;
+    height: 100vh;
+}
+#header-login{
+    width: 100%;
+    height: 10%;
+    background-color: #6cf3d5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#header-login h2{
+    color: white;
+}
+main{
+    width: 100%;
+    height: 80%;
+    background-color: white;
+    margin: 0;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+}
+footer{
+    width: 100%;
+    height: 10%;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+#frm-login{
+    width: 30%;
+    height: 60%;
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 5%;
+    border: 1px solid #13c8b5;
+}
+input:focus{
+    border-bottom: 1px solid #6cf3d5;
+}
+#frm-div-login-email{
+    height: 60px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#frm-login input {
+    height: 20px;
+    width: 100%;
+    box-shadow: 0 0 0 0;
+    border: 0 none;
+    outline: 0;
+}
+#frm-div-label-login-email{
+    width: 60px;
+    height: 20px;
+    margin-left: 3px;
+}
+#frm-div-login-senha{
+    height: 60px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+#frm-div-label-login-senha{
+    width: 60px;
+    height: 20px;
+    margin-left: 3px;
+}
+#frm-login button{
+    width: 80%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #6cf3d5;
+}
+#frm-login button:hover{
+    cursor: pointer;
+    background-color: #21a3a3;
+    color: white;
+}
+#frm-div-logar{
+    width: 80%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+#frm-div-cadastrar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 80%;
+    height: 47px;
+    margin-top: 10px;
+}
+a {
+    color: black;
+    text-decoration: none;
+}
+a:hover{
+    color: white;
+}
+#error{
+    margin-top: 3px;
+    font-size: 12px;
+    color: red;
+}
+

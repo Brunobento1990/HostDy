@@ -113,3 +113,4 @@ D:\HostDy\HostDy\HostDy\bin\Debug\netcoreapp3.1\Microsoft.Office.Interop.Excel.d
 D:\HostDy\HostDy\HostDy\bin\Debug\netcoreapp3.1\SixLabors.Fonts.dll
 D:\HostDy\HostDy\HostDy\bin\Debug\netcoreapp3.1\System.IO.Packaging.dll
 D:\HostDy\HostDy\HostDy\bin\Debug\netcoreapp3.1\XLParser.dll
+D:\HostDy\HostDy\HostDy\bin\Debug\netcoreapp3.1\Polly.dll

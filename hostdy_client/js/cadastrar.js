@@ -1,6 +1,8 @@
 var email = document.querySelector('#email');
 var senha = document.querySelector('#senha');
 var btnLogar = document.querySelector('#frm-btn-cadastrar');
+var error = document.querySelector('#error');
+error.innerHTML = ''
 btnLogar.addEventListener('click',Cadastrar);
 
 async function Cadastrar(event){
@@ -26,13 +28,15 @@ async function Cadastrar(event){
     const req = fetch('https:/localhost:44347/Usuario/CreateUsuario', options)
         .then(response => {    
             if(response.status == 201){
+                localStorage.setItem("EmailUsuario",email.value);
                 window.location.href = 'principal.html';
                 return response.json()
+            }else{
+                return response.json();
             }
-            if(response.status == 404){
-                alert('Ocorreu uma falha ao cadastrar o usuario, tente novamente mais tarde!')
-            }
-            
+        })
+        .then(resp => {
+            Error(resp)
         })
         .catch(erro => {
             console.log(erro);
@@ -42,6 +46,9 @@ async function Cadastrar(event){
     console.log(req)
 }
 
+function Error(json){
+    error.innerHTML = json.message;
+}
 
 function Usuario(){
     var Usuario = {

@@ -37,7 +37,11 @@ namespace HostDy.Controllers
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(senha))
             {
                 _logger.LogError("Parâmetro incorreto!");
-                return BadRequest("Parâmetro incorreto!");
+                var errorParametro = new
+                {
+                    message = "Parâmetro incorreto!"
+                };
+                return BadRequest(errorParametro);
             }
             var usuario = _usuarioRepository.GetUsuario(email,senha);
 
@@ -48,14 +52,18 @@ namespace HostDy.Controllers
                 return Ok(usuario);
             }
             _logger.LogError("Acesso negado!");
-            return NotFound("Usuário ou senha incorreta!");
+            var error = new
+            {
+                message = "Usuário ou senha incorreta!"
+            };
+            return NotFound(error);
         }
         [HttpPost]
         public IActionResult CreateUsuario(UsuarioDto usuario)
         {
             if (string.IsNullOrWhiteSpace(usuario.Email) || string.IsNullOrWhiteSpace(usuario.Senha))
             {
-                _logger.LogError("Parâmetro incorreto!");
+                _logger.LogError("Parâmetro inválidos!");
                 return BadRequest("Parâmetros inválidos");
             }
             if (_usuarioRepository.CreateUsuario(usuario))
@@ -65,7 +73,11 @@ namespace HostDy.Controllers
                 return Created("Usuário cadastrado com sucesso!", usuario);
             }
             _logger.LogError("Erro ao cadastrar usuario!");
-            return NotFound("Ocorreu um erro, tente novamente mais tarde!");
+            var errorCreated = new
+            {
+                message = "Ocorreu um erro, tente novamente mais tarde!"
+            };
+            return NotFound(errorCreated);
         }
     }
 }

@@ -18,16 +18,20 @@ namespace HostDy.Service
 
         public bool EnviarListCidades(List<DadosIBGEDto> dadosIbge,string email)
         {
+            _servicePlanilha.GerarPlanilha(dadosIbge);
+
             var result = false;
+            if (File.Exists("D:\\HostDy\\DadosIBGE.xlsx"))
+            {
                 try
                 {
-                    _servicePlanilha.GerarPlanilha(dadosIbge);
+
                     MailMessage mail = new MailMessage("brunobentocaina@gmail.com", email);
                     mail.Subject = "Planilha";
                     mail.SubjectEncoding = System.Text.Encoding.GetEncoding("UTF-8");
-                    mail.Body = "Segue em anexo a planilha listando os dados do IBGE.";
+                    mail.Body = "Segue em anexo a planilha listando as Cidades,Estados e Regiões do Brasil. Fonte IBGE.";
                     mail.BodyEncoding = System.Text.Encoding.GetEncoding("UTF-8");
-                    
+
                     Attachment att = new Attachment("D:\\HostDy\\DadosIBGE.xlsx");
                     mail.Attachments.Add(att);
                     SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
@@ -41,6 +45,7 @@ namespace HostDy.Service
                 {
                     result = false;
                 }
+            }
             return result;
         }
     }

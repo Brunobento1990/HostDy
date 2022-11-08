@@ -16,23 +16,30 @@ namespace HostDy.Controllers
     {
         private static ServiceEmail _serviceEmail = new ServiceEmail();
         private readonly IMemoryCache _memoryCache;
-        private const string Countries_Key_Usuario = "Countries_Usuario";
         private const string Countries_Key = "Countries";
         public EmailController(IMemoryCache memoryCache)
         {
             _memoryCache = memoryCache;
         }
         [HttpGet]
-        public IActionResult EnviarEmail()
+        public IActionResult EnviarEmail(string email)
         {
             if (_memoryCache.TryGetValue(Countries_Key, out List<DadosIBGEDto> dadosIbge))
             {
-                if (_memoryCache.TryGetValue(Countries_Key_Usuario, out UsuarioDto usuario))
-                {
-                    var result = _serviceEmail.EnviarListCidades(dadosIbge,usuario.Email);
+                    var result = _serviceEmail.EnviarListCidades(dadosIbge,email);
 
                     if (result) return Ok("E-mail enviado com sucesso!");
-                }
+
+            }
+            else
+            {
+                var serviceCidades = new ServiceCidades();
+                var serviceDadosIBGE = new ServiceDadosIBGE();
+                var dados = serviceCidades.GetDadosIBGE();
+                var dadosIBGE = serviceDadosIBGE.PreencherLista(dados);
+                var result = _serviceEmail.EnviarListCidades(dadosIBGE, email);
+
+                if (result) return Ok("E-mail enviado com sucesso!");
             }
             return NotFound("Não foi possível enviar o e-mail!");
         }

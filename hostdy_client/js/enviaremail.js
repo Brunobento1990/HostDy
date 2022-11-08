@@ -9,8 +9,13 @@ async function EnviarEmail(event){
         method: 'GET',
         headers: { 'content-type': 'application/json' },
     };
-
-    const req = fetch('https:/localhost:44347/Email/EnviarEmail', options)
+    if(!localStorage.getItem("EmailUsuario")){
+        alert("É necessário logar novamente!")
+        return
+    }else{
+        var email = localStorage.getItem("EmailUsuario");
+    }
+    const req = fetch('https:/localhost:44347/Email/EnviarEmail?email='+email, options)
         .then(response => {  
             if (response.status == 200)  {
                 alert('E-mail enviado com sucesso!');
