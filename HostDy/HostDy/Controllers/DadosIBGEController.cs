@@ -15,8 +15,8 @@ namespace HostDy.Controllers
     [ApiController]
     public class DadosIBGEController : ControllerBase
     {
-        private static ServiceCidades _serviceCidades = new ServiceCidades();
-        private static ServiceDadosIBGE _serviceDadosIBGE = new ServiceDadosIBGE();
+        private static ServiceCidades _serviceCidades;
+        private static ServiceDadosIBGE _serviceDadosIBGE;
         private readonly ILogger<DadosIBGEController> _logger;
         public readonly IMemoryCache _memoryCache;
         private const string Countries_Key = "Countries";
@@ -24,6 +24,9 @@ namespace HostDy.Controllers
 
         public DadosIBGEController(ILogger<DadosIBGEController> logger,IMemoryCache memoryCache)
         {
+            _serviceCidades = new ServiceCidades();
+            _serviceDadosIBGE = new ServiceDadosIBGE();
+
             _memory = new MemoryCacheEntryOptions
             {
                 AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(3600),

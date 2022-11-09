@@ -23,6 +23,7 @@ const req = fetch('https://localhost:44347/DadosIBGE/GetDadosIBGE', options)
         }
         if(response.status == 404){
             alert("Não há dados a serem apresentados!")
+            carregando.innerHTML = ""
             return 
         } 
     })

@@ -90,6 +90,19 @@
           "lib/netstandard2.0/ExcelNumberFormat.dll": {}
         }
       },
+      "ExpectedObjects/3.5.4": {
+        "type": "package",
+        "dependencies": {
+          "NETStandard.Library": "1.6.1",
+          "System.Reflection.TypeExtensions": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/ExpectedObjects.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/ExpectedObjects.dll": {}
+        }
+      },
       "Irony.NetCore/1.0.11": {
         "type": "package",
         "dependencies": {
@@ -2302,6 +2315,19 @@
         "lib/netstandard1.0/ExcelNumberFormat.xml",
         "lib/netstandard2.0/ExcelNumberFormat.dll",
         "lib/netstandard2.0/ExcelNumberFormat.xml"
+      ]
+    },
+    "ExpectedObjects/3.5.4": {
+      "sha512": "7urJ3ZpCWIegl2JfDbmyIR+E1Wu/4sG9oJPYVBxByBnbVavFcOHbWTlDeWMJQAYu8ZgrO0OG8UeiCnsWbxzYlA==",
+      "type": "package",
+      "path": "expectedobjects/3.5.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "expectedobjects.3.5.4.nupkg.sha512",
+        "expectedobjects.nuspec",
+        "lib/net40/ExpectedObjects.dll",
+        "lib/netstandard1.3/ExpectedObjects.dll"
       ]
     },
     "Irony.NetCore/1.0.11": {
@@ -7484,6 +7510,7 @@
     ".NETCoreApp,Version=v3.1": [
       "ClosedXML >= 0.97.0",
       "Dapper >= 2.0.123",
+      "ExpectedObjects >= 3.5.4",
       "Microsoft.Office.Interop.Excel >= 15.0.4795.1001",
       "Newtonsoft.Json >= 13.0.1",
       "Polly >= 7.2.3",
@@ -7546,6 +7573,10 @@
           "Dapper": {
             "target": "Package",
             "version": "[2.0.123, )"
+          },
+          "ExpectedObjects": {
+            "target": "Package",
+            "version": "[3.5.4, )"
           },
           "Microsoft.Office.Interop.Excel": {
             "target": "Package",

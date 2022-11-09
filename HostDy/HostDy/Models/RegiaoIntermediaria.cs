@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace HostDy.Models
 {
-    public class Regiaointermediaria
+    public class Regiaointermediaria : IDadosIBGE
     {
         public int Id { get; set; }
         public string Nome { get; set; }

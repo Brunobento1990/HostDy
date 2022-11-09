@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HostDy.Models
 {
-    public class DadosIBGE
+    public class DadosIBGE : IDadosIBGE
     {
         public int Id { get; set; }
         public string Nome { get; set; }

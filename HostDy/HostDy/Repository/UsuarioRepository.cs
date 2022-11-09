@@ -22,7 +22,7 @@ namespace HostDy.Repository
         }
         public UsuarioDto GetUsuario(string email,string senha)
         {
-            var usuario = new UsuarioDto();
+            var usuario = new UsuarioDto(email,senha);
 
             try
             {
@@ -66,6 +66,30 @@ namespace HostDy.Repository
             catch (SqlException e)
             {
                 result = false;
+            }
+
+            return result;
+        }
+
+        public UsuarioDto GetUsuarioEmail(string email,string senha)
+        {
+            var result = new UsuarioDto(email, senha);
+
+            try
+            {
+                using (_conexaoBanco)
+                {
+                    var query = "select * from Usuario where Email = @email";
+                    var parameters = new
+                    {
+                        email,
+                    };
+                    result = _conexaoBanco.QueryFirstOrDefault<UsuarioDto>(query, parameters);
+                }
+            }
+            catch (SqlException e)
+            {
+                result = null;
             }
 
             return result;

@@ -14,11 +14,12 @@ namespace HostDy.Controllers
     [ApiController]
     public class EmailController : ControllerBase
     {
-        private static ServiceEmail _serviceEmail = new ServiceEmail();
+        private static ServiceEmail _serviceEmail;
         private readonly IMemoryCache _memoryCache;
         private const string Countries_Key = "Countries";
         public EmailController(IMemoryCache memoryCache)
         {
+            _serviceEmail = new ServiceEmail();
             _memoryCache = memoryCache;
         }
         [HttpGet]

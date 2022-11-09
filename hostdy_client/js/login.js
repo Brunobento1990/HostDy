@@ -9,12 +9,17 @@ btnLogar.addEventListener('click',Logar);
 
 async function Logar(event){
     event.preventDefault()
-    if(!email.value){
-        alert("Informe seu e-mail");
+    btnLogar.innerHTML = 'Logando...';
+    var validaEmail = validarEmail(email.value)
+    if(!email.value || !validaEmail){
+        alert("E-mail inválido!");
+        btnLogar.innerHTML = 'Login';
         return
     }
+    
     if(!senha.value){
         alert("Informe sua senha!")
+        btnLogar.innerHTML = 'Login';
         return
     }
 
@@ -29,6 +34,7 @@ async function Logar(event){
                 localStorage.setItem("EmailUsuario",email.value);
                 window.location.href = 'principal.html';
             }else{
+                btnLogar.innerHTML = 'Login';
                 return response.json()
             }
         })
@@ -53,5 +59,10 @@ function PreencherUsuraio(json){
     }
 
     return Usuario
+}
+
+function validarEmail(email) {
+    var result = /\S+@\S+\.\S+/;
+    return result.test(email);
 }
 

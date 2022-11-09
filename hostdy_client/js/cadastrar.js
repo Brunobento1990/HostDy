@@ -8,8 +8,9 @@ btnLogar.addEventListener('click',Cadastrar);
 async function Cadastrar(event){
     event.preventDefault()
     event.preventDefault()
-    if(!email.value){
-        alert("Informe seu e-mail");
+    var validaEmail = validarEmail(email.value)
+    if(!email.value || !validaEmail){
+        error.innerHTML = 'E-mail inválido!';
         return
     }
     if(!senha.value){
@@ -31,7 +32,7 @@ async function Cadastrar(event){
                 localStorage.setItem("EmailUsuario",email.value);
                 window.location.href = 'principal.html';
                 return response.json()
-            }else{
+            }else if(response.status == 400){
                 return response.json();
             }
         })
@@ -42,8 +43,6 @@ async function Cadastrar(event){
             console.log(erro);
             return erro;
         });
-
-    console.log(req)
 }
 
 function Error(json){
@@ -57,4 +56,9 @@ function Usuario(){
         Ativo : true
     }
     return Usuario
+}
+
+function validarEmail(email) {
+    var result = /\S+@\S+\.\S+/;
+    return result.test(email);
 }

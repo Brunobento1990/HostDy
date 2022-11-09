@@ -1,13 +1,7 @@
 ﻿using HostDy.Dtos;
 using HostDy.Repository;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HostDy.Controllers
 {
@@ -16,18 +10,9 @@ namespace HostDy.Controllers
     public class UsuarioController : ControllerBase
     {
         private readonly UsuarioRepository _usuarioRepository;
-        private readonly IMemoryCache _memoryCache;
-        private const string Countries_Key_Usuario = "Countries_Usuario";
-        private readonly MemoryCacheEntryOptions _memory;
         private readonly ILogger<UsuarioController> _logger;
-        public UsuarioController(ILogger<UsuarioController> logger,IMemoryCache memoryCache)
+        public UsuarioController(ILogger<UsuarioController> logger)
         {
-            _memory = new MemoryCacheEntryOptions
-            {
-                AbsoluteExpirationRelativeToNow = TimeSpan.FromSeconds(3600),
-                SlidingExpiration = TimeSpan.FromSeconds(1200)
-            };
-            _memoryCache = memoryCache;
             _usuarioRepository = new UsuarioRepository();
             _logger = logger;
         }
@@ -47,8 +32,7 @@ namespace HostDy.Controllers
 
             if (usuario != null)
             {
-                _logger.LogError("Login = " + usuario.Email);
-                _memoryCache.Set(Countries_Key_Usuario, usuario, _memory);
+                _logger.LogWarning("Login = " + usuario.Email);
                 return Ok(usuario);
             }
             _logger.LogError("Acesso negado!");
@@ -61,17 +45,35 @@ namespace HostDy.Controllers
         [HttpPost]
         public IActionResult CreateUsuario(UsuarioDto usuario)
         {
-            if (string.IsNullOrWhiteSpace(usuario.Email) || string.IsNullOrWhiteSpace(usuario.Senha))
+            var usuarioCriado = new UsuarioDto(usuario.Email,usuario.Senha);
+            if (usuarioCriado == null)
             {
                 _logger.LogError("Parâmetro inválidos!");
-                return BadRequest("Parâmetros inválidos");
+                var errorCreate = new
+                {
+                    message = "E-mail ou senha inválidos!"
+                };
+                return BadRequest(errorCreate);
             }
+
+            var usuarioVerifica = _usuarioRepository.GetUsuarioEmail(usuario.Email,usuario.Senha);
+            if(usuarioVerifica != null)
+            {
+                _logger.LogError("Usuário já cadastrado");
+                var errorCreate = new
+                {
+                    message = "Usuário já cadastrado"
+                };
+                return BadRequest(errorCreate);
+            }
+
             if (_usuarioRepository.CreateUsuario(usuario))
             {
-                _logger.LogError("Login = " + usuario.Email);
-                _memoryCache.Set(Countries_Key_Usuario, usuario, _memory);
+                _logger.LogWarning("Login = " + usuario.Email);
+
                 return Created("Usuário cadastrado com sucesso!", usuario);
             }
+
             _logger.LogError("Erro ao cadastrar usuario!");
             var errorCreated = new
             {

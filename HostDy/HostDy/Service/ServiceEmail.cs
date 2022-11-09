@@ -25,8 +25,8 @@ namespace HostDy.Service
             {
                 try
                 {
-
-                    MailMessage mail = new MailMessage("brunobentocaina@gmail.com", email);
+                    //Adicionar e-mail de envio
+                    MailMessage mail = new MailMessage("", email);
                     mail.Subject = "Planilha";
                     mail.SubjectEncoding = System.Text.Encoding.GetEncoding("UTF-8");
                     mail.Body = "Segue em anexo a planilha listando as Cidades,Estados e Regiões do Brasil. Fonte IBGE.";
@@ -37,7 +37,8 @@ namespace HostDy.Service
                     SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
                     smtp.EnableSsl = true;
                     smtp.UseDefaultCredentials = false;
-                    smtp.Credentials = new NetworkCredential("brunobentocaina@gmail.com", "jhauzufhbxvwjved");
+                    // Configurar E-mail de envio
+                    smtp.Credentials = new NetworkCredential("", "");
                     smtp.Send(mail);
                     result = true;
                 }

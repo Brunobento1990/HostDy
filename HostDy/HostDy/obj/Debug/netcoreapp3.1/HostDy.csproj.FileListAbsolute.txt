@@ -114,3 +114,4 @@ D:\HostDy\HostDy\HostDy\bin\Debug\netcoreapp3.1\SixLabors.Fonts.dll
 D:\HostDy\HostDy\HostDy\bin\Debug\netcoreapp3.1\System.IO.Packaging.dll
 D:\HostDy\HostDy\HostDy\bin\Debug\netcoreapp3.1\XLParser.dll
 D:\HostDy\HostDy\HostDy\bin\Debug\netcoreapp3.1\Polly.dll
+D:\HostDy\HostDy\HostDy\bin\Debug\netcoreapp3.1\ExpectedObjects.dll

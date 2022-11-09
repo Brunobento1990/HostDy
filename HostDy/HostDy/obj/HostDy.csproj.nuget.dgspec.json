@@ -52,6 +52,10 @@
               "target": "Package",
               "version": "[2.0.123, )"
             },
+            "ExpectedObjects": {
+              "target": "Package",
+              "version": "[3.5.4, )"
+            },
             "Microsoft.Office.Interop.Excel": {
               "target": "Package",
               "version": "[15.0.4795.1001, )"

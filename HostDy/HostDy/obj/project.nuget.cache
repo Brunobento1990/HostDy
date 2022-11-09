@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jxFHeZmptqVS914aQWp5W/5CCeujwh8KLmgTqXO4kkU9P/6nkyz0Hv3tVE7oqx1O9idoKjyjUZG5OWrRr20RQg==",
+  "dgSpecHash": "aOgLCL9ZSZeFrsYQf6EDcxD04iwivdiG1yWHgeDeRr7+62FhYVQ1S5ru6vR8JgyqGFxBjQ7IEoaYbGBiFkCtiQ==",
   "success": true,
   "projectFilePath": "D:\\HostDy\\HostDy\\HostDy\\HostDy.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,7 @@
     "C:\\Users\\bruno\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\bruno\\.nuget\\packages\\documentformat.openxml\\2.16.0\\documentformat.openxml.2.16.0.nupkg.sha512",
     "C:\\Users\\bruno\\.nuget\\packages\\excelnumberformat\\1.1.0\\excelnumberformat.1.1.0.nupkg.sha512",
+    "C:\\Users\\bruno\\.nuget\\packages\\expectedobjects\\3.5.4\\expectedobjects.3.5.4.nupkg.sha512",
     "C:\\Users\\bruno\\.nuget\\packages\\irony.netcore\\1.0.11\\irony.netcore.1.0.11.nupkg.sha512",
     "C:\\Users\\bruno\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\bruno\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
